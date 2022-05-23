@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt_BR" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fatec Praia Grande</title>
+    <meta charset="utf-8">
+    <title>Fatec Praia Grande</title>
+    <!-- Font Awesome -->
+    <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"/>
+     <!-- Google Fonts -->
+     <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"/>
+     <!-- MDB -->
+     <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css"
+            rel="stylesheet"/>
+  <style>
+  *, *:before, *:after {
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  html {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    font-smooth: auto;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  body {
+    padding-top: 50px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Source Code Pro", monospace;
+  }
+
+  h2 {
+    margin: 5px 0;
+    color: black;
+  }
+
+  p {
+    margin: 200px 0;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    background-color: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9998;
+  }
+
+  .logo {
+    position: relative;
+    display: block;
+    color: #A3130D;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+  }
+  .logo i {
+    margin-right: 10px;
+    color: #cc6733;
+  }
+
+  .nav-menu {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(245, 245, 245, 0.95);
+    transition: 0.25s linear;
+    z-index: 9998;
+  }
+  .navigation.is-open {
+    left: 0;
+  }
+  .navigation ul {
+    position: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  .navigation ul li {
+    position: relative;
+    height: 25vh;
+    border-bottom: 1px solid rgba(68, 68, 68, 0.1);
+  }
+  .navigation a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    color: #A3130D;
+    font-family: "Source Code Pro", monospace;
+    font-size: 35px;
+    text-decoration: none;
+  }
+  .navigation a:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #A3130D;
+    transition: 0.25s;
+    z-index: -1;
+  }
+  .navigation a:hover {
+    color: whitesmoke;
+  }
+  .navigation a:hover:before {
+    width: 100%;
+  }
+
+  .hamburger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    padding: 0;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    z-index: 9999;
+  }
+  .hamburger.is-open span {
+    background-color: black;
+    transition: 0.25s transform linear;
+  }
+  .hamburger.is-open span:first-child {
+    transform: translateY(2px) rotate(45deg);
+    animation: hamburger3 0.25s linear;
+  }
+  @keyframes hamburger3 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(2px) rotate(45deg);
+    }
+  }
+  .hamburger.is-open span:nth-child(2) {
+    width: 0;
+  }
+  .hamburger.is-open span:last-child {
+    transform: translateY(-2px) rotate(-45deg);
+    animation: hamburger4 0.25s linear;
+  }
+  @keyframes hamburger4 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-2px) rotate(-45deg);
+    }
+  }
+
+  .hamburger span {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: #A3130D;
+    border-radius: 10px;
+    transform-origin: center center;
+    transition: 0.25s transform linear;
+  }
+  .hamburger span:first-child {
+    transform: translateY(-5px) rotate(0deg);
+    animation: hamburger1 0.25s linear;
+  }
+  @keyframes hamburger1 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-5px) rotate(0deg);
+    }
+  }
+  .hamburger span:last-child {
+    transform: translateY(5px) rotate(0deg);
+    animation: hamburger2 0.25s linear;
+  }
+  @keyframes hamburger2 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(5px) rotate(0deg);
+    }
+  }
+
+  section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  section:nth-of-type(1) {
+    background-color: #ffffff;
+    animation: backgrounder 30s linear infinite;
+  }
+  section:nth-of-type(2) {
+    background-color: #c6c6c6;
+    animation: backgrounder 30s linear infinite;
+  }
+  section:nth-of-type(3) {
+    background-color: #919191;
+    animation: backgrounder 30s linear infinite;
+  }
+  section:nth-of-type(4) {
+    background-color: #60767c;
+    animation: backgrounder 30s linear infinite;
+  }
+  section:nth-of-type(5) {
+    background-color: #5e5e5e;
+    animation: backgrounder 30s linear infinite;
+  }
+  section .section-heading {
+    position: sticky;
+    top: 60px;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 0.3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    z-index: 9996;
+  }
+
+  footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 200px 0;
+    background-color: #333;
+    color: white;
+  }
+
+  .grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  @media (min-width: 48rem) {
+    .grid-container {
+      padding: 0 20px;
+    }
+  }
+  .grid-container.full {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  @media (min-width: 48rem) {
+    .grid-container.full {
+      padding: 0 20px;
+    }
+  }
+  .grid-container .grid-x {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  @media (min-width: 48rem) {
+    .grid-container .grid-x {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+  .grid-container .grid-x.align-left {
+    justify-content: flex-start;
+  }
+  .grid-container .grid-x.align-right {
+    justify-content: flex-end;
+  }
+  .grid-container .grid-x.align-justify {
+    justify-content: space-between;
+  }
+  .grid-container .grid-x.align-top {
+    align-items: flex-start;
+  }
+  .grid-container .grid-x.align-bottom {
+    align-items: flex-end;
+  }
+  .grid-container .grid-x.align-middle {
+    align-items: center;
+  }
+  .grid-container .grid-x.align-center {
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-container .grid-x.grid-margin-x .cell {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .grid-container .grid-x.grid-padding-x .cell {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .grid-container .grid-x.grid-margin-y .cell {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .grid-container .grid-x.grid-padding-y .cell {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .cell {
+    display: block;
+    width: 100%;
+  }
+  @media (min-width: 20rem) {
+    .cell.small-1 {
+      width: 8.3333%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-2 {
+      width: 16.6666%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-3 {
+      width: 25%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-4 {
+      width: 33.3333%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-5 {
+      width: 41.6666%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-6 {
+      width: 50%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-7 {
+      width: 58.3333%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-8 {
+      width: 66.6666%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-9 {
+      width: 75%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-10 {
+      width: 83.3333%;
+    }
+  }
+  @media (min-width: 20rem) {
+    .cell.small-11 {
+      width: 91.666612%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-1 {
+      width: 8.3333%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-2 {
+      width: 16.6666%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-3 {
+      width: 25%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-4 {
+      width: 33.3333%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-5 {
+      width: 41.6666%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-6 {
+      width: 50%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-7 {
+      width: 58.3333%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-8 {
+      width: 66.6666%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-9 {
+      width: 75%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-10 {
+      width: 83.3333%;
+    }
+  }
+  @media (min-width: 48rem) {
+    .cell.medium-11 {
+      width: 91.666612%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-1 {
+      width: 8.3333%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-2 {
+      width: 16.6666%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-3 {
+      width: 25%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-4 {
+      width: 33.3333%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-5 {
+      width: 41.6666%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-6 {
+      width: 50%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-7 {
+      width: 58.3333%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-8 {
+      width: 66.6666%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-9 {
+      width: 75%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-10 {
+      width: 83.3333%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cell.large-11 {
+      width: 91.666612%;
+    }
+  }
+  .cell.align-self-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .cell.align-self-left {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .top-bar .grid-x {
+    flex-wrap: nowrap;
+  }
+  </style>
+  </head>
+  <body>
+    <header class="top-bar">
+    <div class="grid-container full">
+      <div class="grid-x align-middle">
+        <div class="cell small-11"><span>Fatec Praia Grande</span></a></div>
+        <div class="cell small-1 nav-menu">
+          <button class="hamburger"><span></span><span></span><span></span></button>
+          <nav class="navigation">
+            <ul>
+              <li><a href="#">Insitucional</a></li>
+              <li><a href="#">Cursos</a></li>
+              <li><a href="#">Calendario</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">AAAA</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="section-heading">
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-7">
+                  <img
+                       src="https://www.fatecpg.edu.br/img/logoFatec.png"
+                       class="img-fluid rounded"
+                       alt="Townhouses and Skyscrapers"/>
+                </div>
+                <div class="col-md-2 d-none d-sm-block">
+                  <img
+                    src="https://www.fatecpg.edu.br/img/logoCPS.png"
+                    class="img-fluid rounded"
+                    alt="Townhouses and Skyscrapers"
+                  />
+                  </div>
+                <div class="col-md-3 d-none d-sm-block">
+              <img
+                src="https://www.fatecpg.edu.br/img/logoGoverno.png"
+                class="img-fluid rounded"
+                alt="Townhouses and Skyscrapers"
+              />
+            </div>
+              </div>
+            </div><br>
+                    <div class="bg-image hover-overlay ripple">
+                    <img
+                      src="https://images2.imgbox.com/05/9e/e0BRxl8y_o.jpg"
+                      class="img-fluid shadow-2-strong"
+                      alt="Palm Springs Road"
+                    />
+                     <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+                  </div>
+                  <h3>Sobre a Faculdade</h3>
+                  <div class="col-md-4">Blablablabla</div>
+               </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-heading">
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell">
+            <h2>Noticias e Avisos</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <div class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="col">
+    <div class="card">
+      <img src="https://www.fatecpg.edu.br/img/upload/slider-2022.03.08-14.22.22jpeg" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+      <div class="card-body">
+        <h5 class="card-title">Vestibular Fatec 2022</h5>
+        <p class="card-text">
+         Data:
+         Inscrição:
+         Cursos:
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://www.fatecpg.edu.br/img/upload/slider-2022.04.07-08.58.28jpeg" class="card-img-top" alt="Palm Springs Road"/>
+      <div class="card-body">
+        <h5 class="card-title">Segundo ComexIN</h5>
+        <p class="card-text">
+          Sobre o evento.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img src="https://www.fatecpg.edu.br/img/upload/slider-2022.04.07-08.59.56.png" class="card-img-top" alt="Los Angeles Skyscrapers"/>
+      <div class="card-body">
+        <h5 class="card-title">ProMAIPS</h5>
+        <p class="card-text">Sobre o evento</p>
+      </div>
+    </div>
+  </div>
+
+        </div>
+      </div>
+    </div><br>
+  </section>
+  <section>
+    <div class="section-heading">
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell">
+            <h2>Acesso Rapido</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <ul class="nav nav-tabs mb-3" id="myTab0" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="btn btn-dark btn-rounded"
+                id="home-tab0"
+                data-mdb-toggle="tab"
+                data-mdb-target="#home0"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                Aluno
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="btn btn-dark btn-rounded"
+                id="profile-tab0"
+                data-mdb-toggle="tab"
+                data-mdb-target="#profile0"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Secretaria
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="btn btn-dark btn-rounded"
+                id="contact-tab0"
+                data-mdb-toggle="tab"
+                data-mdb-target="#contact0"
+                type="button"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                Estagio
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent0">
+            <div
+              class="tab-pane fade show active"
+              id="home0"
+              role="tabpanel"
+              aria-labelledby="home-tab0"
+            >
+              <h5>Link 1</h5>
+              <h5>Link 2</h5>
+              <h5>Link 3</h5>
+              <h5>Link 4</h5>
+            </div>
+            <div class="tab-pane fade" id="profile0" role="tabpanel" aria-labelledby="profile-tab0">
+              <h5>Link 1</h5>
+              <h5>Link 2</h5>
+              <h5>Link 3</h5>
+              <h5>Link 4</h5>
+            </div>
+            <div class="tab-pane fade" id="contact0" role="tabpanel" aria-labelledby="contact-tab0">
+              <h5>Link 1</h5>
+              <h5>Link 2</h5>
+              <h5>Link 3</h5>
+              <h5>Link 4</h5>
+            </div>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-heading">
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell">
+            <h2>Depoimentos</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <div class="row">
+             <div class="col-md-6">
+               <img
+                 src="https://mdbcdn.b-cdn.net/img/new/standard/city/047.webp"
+                 class="img-fluid rounded-circle"
+                 alt="Townhouses and Skyscrapers"
+               />
+
+
+             </div>
+             <div class="col-md-6">
+               <br>
+               <h3><strong> Nome Sobrenome </strong></h3>
+                <h4><strong> Curso </strong></h4>
+                <h5><strong> Blablablablablablablablablabla </strong></h5>s
+               </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-heading">
+      <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell">
+            <h2>Cursos</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="cell">
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+              <div class="card">
+                <img src="https://senaigoias.com.br/repositoriosites/repositorio/senai/editor/Image/vestibular20/imagens_curso_desenvolvimento_sistema.jpg" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                <div class="card-body">
+                  <h5 class="card-title">Analise e Desenvolvimento de Sistemas</h5>
+                  <p class="card-text">
+                    This is a longer card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://internacionaldaamazoniacom.files.wordpress.com/2021/11/img-servicos-01.jpg" class="card-img-top" alt="Palm Springs Road"/>
+                <div class="card-body">
+                  <h5 class="card-title">Comercio Exterior</h5>
+                  <p class="card-text">
+                    Blablablablablablablablablabla
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://www.ipeg.org.br/wp-content/uploads/2019/06/50.png" class="card-img-top" alt="Los Angeles Skyscrapers"/>
+                <div class="card-body">
+                  <h5 class="card-title">Gestão Empresarial</h5>
+                  <p class="card-text">  Blablablablablablablablablabla</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://www.anchieta.br/hs-fs/hubfs/processos%20quimicos.jpg?width=1000&name=processos%20quimicos.jpg" class="card-img-top" alt="Skyscrapers"/>
+                <div class="card-body">
+                  <h5 class="card-title">Processos Quimicos</h5>
+                  <p class="card-text">
+                    Blablablablablablablablablabla
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+       </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7">
+                <img
+                     src="https://www.fatecpg.edu.br/img/logoFatec.png"
+                     class="img-fluid rounded"
+                     alt="Townhouses and Skyscrapers"/>
+              </div>
+              <div class="col-md-2 d-none d-sm-block">
+                <img
+                  src="https://www.fatecpg.edu.br/img/logoCPS.png"
+                  class="img-fluid rounded"
+                  alt="Townhouses and Skyscrapers"
+                />
+                </div>
+              <div class="col-md-3 d-none d-sm-block">
+            <img
+              src="https://www.fatecpg.edu.br/img/logoGoverno.png"
+              class="img-fluid rounded"
+              alt="Townhouses and Skyscrapers"
+            />
+          </div>
+            </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- MDB -->
+  <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+  <script>
+  const hamburger = document.querySelector(".hamburger");
+  const navigation = document.querySelector(".navigation");
+
+  hamburger.addEventListener("click", () => {
+  	navigation.classList.toggle("is-open");
+  	hamburger.classList.toggle("is-open");
+  });
+
+  </script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"
+  ></script>
+  </body>
+</html>
